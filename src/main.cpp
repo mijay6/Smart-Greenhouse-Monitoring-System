@@ -416,44 +416,4 @@ void setup() {
 // --- Main loop function ---
 void loop() {
   vTaskDelay(pdMS_TO_TICKS(1000)); // Keep the loop alive with a delay
-  /**
-  if (!client.connected()) {
-    reconect();
-  }
-
-  client.loop(); // To keep the connection alive and to check for incoming messages
-
-  unsigned long now = millis();
-  if (now - lastMsg > msg_interval){ // Delay between sensor readings
-    lastMsg = now;
-
-    // --- Read sensors ---
-    float temperature = dht.readTemperature(); // Celsius by default
-    float humidity = dht.readHumidity();
-    float lightIntensity = luxToPPFD(lightSensor.readLightLevel()); // convert from lux to PPFD
-
-
-    // TODO: aqui que hacemos si nos da fallos de lectura?
-    // if (isnan(temperature) || isnan(humidity)) {
-    //   Serial.println("Failed to read from DHT sensor!");
-    //  return;
-    //}
-
-
-    // --- Add variables to JSON document ---
-    JsonDocument doc;
-
-    doc["temperature"] = temperature;
-    doc["humidity"] = humidity;
-    doc["light_intensity"] = lightIntensity;
-
-    // -- Serialize JSON document and send ---
-    char buffer[256];
-    serializeJson(doc, buffer);
-    client.publish(topic_env_sensor, buffer);
-    Serial.printf("Published to %s: %s\n", topic_env_sensor, buffer);
-  }
-
-  **/
-
 }
